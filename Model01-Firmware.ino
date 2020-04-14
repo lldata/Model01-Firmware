@@ -192,7 +192,7 @@ KEYMAPS(
    Key_RightBracket,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
    OSM(LeftGui), OSM(LeftShift),  Key_Spacebar, MT(LeftAlt, RightAlt), // Key_RightAlt is not oneshot, since wincompose assumes you tap and release the wincompose key
    LockLayer(FUNCTION)),
-
+   
   [NUMPAD] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, Key_LEDEffectNext,
    M(M_LNX), ___, ___, ___, ___, ___, ___,
@@ -218,7 +218,7 @@ KEYMAPS(
 
    ___, Key_F6,          Key_F7,           Key_F8,          Key_F9,                   Key_F10,                  Key_F11,
    Key_Enter,                  Key_Home,   LALT(Key_LeftArrow),   Key_UpArrow,        LALT(Key_RightArrow),     LALT(Key_A),         Key_F12,
-                               Key_End,         Key_LeftArrow,    Key_DownArrow,            Key_RightArrow,     LALT(Key_Quote),     LALT(Key_O),
+                               Key_End,         Key_LeftArrow,    Key_DownArrow,            Key_RightArrow,     LALT(Key_O),     LALT(Key_Quote),
    Consumer_PlaySlashPause,    Consumer_ScanNextTrack,Key_Mute,   Consumer_VolumeDecrement, Consumer_VolumeIncrement, Key_Backslash,   Key_Pipe,
    ___, ___, Key_mouseBtnL, Key_mouseBtnR,
    ___)
