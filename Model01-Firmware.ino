@@ -57,6 +57,8 @@
 
 // Support for controlling the keyboard's LEDs
 #include "Kaleidoscope-LEDControl.h"
+// https://kaleidoscope.readthedocs.io/en/latest/plugins/LED-ActiveModColor.html
+#include <Kaleidoscope-LED-ActiveModColor.h>
 
 // Support for "Numpad" mode, which is mostly just the Numpad specific LED mode
 #include "Kaleidoscope-NumPad.h"
@@ -183,7 +185,7 @@ KEYMAPS(
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
    MT(LeftControl, PageDown), Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftBracket,
-   OSM(LeftAlt), Key_Backspace, OSM(LeftShift), OSM(LeftGui),
+   Key_LeftControl, Key_Backspace, OSM(LeftShift), OSM(LeftGui),
    ShiftToLayer(FUNCTION),
 
    Key_Quote,         Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
@@ -210,9 +212,9 @@ KEYMAPS(
     
   [FUNCTION] =  KEYMAP_STACKED
   (Key_Escape,          Key_F1,           Key_F2,          Key_F3,        Key_F4,          Key_F5,           ___,
-   Key_Insert,          Key_mouseWarpSW,  Key_mouseWarpNW, Key_mouseUp,   Key_mouseWarpNE, Key_mouseWarpSE,  Key_Tab,
-   Key_mouseScrollUp,   LGUI(Key_A),     Key_mouseL,      Key_mouseDn,   Key_mouseR,       Key_mouseBtnL,
-   Key_mouseScrollDn,   LGUI(Key_Z),     LGUI(Key_X),    LGUI(Key_C),  LGUI(Key_V),        Key_Backspace,    ___,
+   Key_Insert,          ___,              ___,             ___,           ___,             ___,              Key_Tab,
+   Key_mouseScrollUp,   LGUI(Key_A),      ___,             LALT(Key_A),   LALT(Key_O),     LALT(Key_Quote),
+   Key_mouseScrollDn,   LGUI(Key_Z),      LGUI(Key_X),     LGUI(Key_C),   LGUI(Key_V),     Key_Backspace,    ___,
    ___, Key_Delete, ___, ___,
    ___,
 
@@ -398,7 +400,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // LEDControl provides support for other LED modes
   LEDControl,
-
+  // color active mods
+  ActiveModColorEffect,
   // We start with the LED effect that turns off all the LEDs.
   LEDOff,
 
@@ -519,8 +522,11 @@ void setup() {
   // configure one-shot:
   // disable sticky feature
   //OneShot.double_tap_sticky = false;
+  OneShot.disableStickabilityForModifiers();
   // shorter timer
   OneShot.time_out = 1500;
+
+  ActiveModColorEffect.highlight_color = CRGB(0x00, 0x00, 0xff);
 }
 
 /** loop is the second of the standard Arduino sketch functions.
