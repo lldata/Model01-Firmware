@@ -181,7 +181,7 @@ enum { QWERTY, NUMPAD, FUNCTION }; // layers
 KEYMAPS(
 
   [QWERTY] = KEYMAP_STACKED
-  (Key_Escape,   Key_1, Key_2, Key_3, Key_4, Key_5, Key_Equals,
+  (Key_Escape,   Key_1, Key_2, Key_3, Key_4, Key_5, Key_Quote,
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
    MT(LeftControl, PageDown), Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftBracket,
@@ -211,11 +211,11 @@ KEYMAPS(
    ___),
     
   [FUNCTION] =  KEYMAP_STACKED
-  (Key_Escape,          Key_F1,           Key_F2,          Key_F3,        Key_F4,          Key_F5,           ___,
+  (Key_Escape,          Key_F1,           Key_F2,          Key_F3,        Key_F4,          Key_F5,           Key_Equals,
    Key_Insert,          ___,              ___,             ___,           ___,             ___,              Key_Tab,
    Key_mouseScrollUp,   LGUI(Key_A),      ___,             LALT(Key_A),   LALT(Key_O),     LALT(Key_Quote),
-   Key_mouseScrollDn,   LGUI(Key_Z),      LGUI(Key_X),     LGUI(Key_C),   LGUI(Key_V),     Key_Backspace,    ___,
-   ___, Key_Delete, ___, ___,
+   Key_mouseScrollDn,   LGUI(Key_Z),      LGUI(Key_X),     LGUI(Key_C),   LGUI(Key_V),     Key_Delete,       ___,
+   ___, ___, ___, ___,
    ___,
 
    ___, Key_F6,          Key_F7,           Key_F8,          Key_F9,                   Key_F10,                  Key_F11,
