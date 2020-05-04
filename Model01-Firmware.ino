@@ -214,7 +214,7 @@ KEYMAPS(
   [FUNCTION] =  KEYMAP_STACKED
   (Key_Escape,          Key_F1,           Key_F2,          Key_F3,        Key_F4,          Key_F5,           Key_Equals,
    Key_Insert,          ___,              ___,             ___,           ___,             ___,              Key_Tab,
-   Key_mouseScrollUp,   LGUI(Key_A),      LALT(Key_Semicolon),             LALT(Key_A),   LALT(Key_Semicolon),     LALT(Key_Quote),
+   Key_mouseScrollUp,   LGUI(Key_A),      LALT(Key_Quote), LALT(Key_Semicolon),            LALT(Key_A),      ___,
    Key_mouseScrollDn,   LGUI(Key_Z),      LGUI(Key_X),     LGUI(Key_C),   LGUI(Key_V),     Key_Delete,       TOPSY(RightBracket),
    ___, ___, ___, ___,
    ___,
