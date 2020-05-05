@@ -223,7 +223,7 @@ KEYMAPS(
    Key_Enter,                  Key_Home,   LALT(Key_LeftArrow),   Key_UpArrow,        LALT(Key_RightArrow),     LALT(Key_A),         Key_F12,
                                Key_End,         Key_LeftArrow,    Key_DownArrow,            Key_RightArrow,     LALT(Key_O),     LALT(Key_Quote),
    Consumer_PlaySlashPause,    Consumer_ScanNextTrack,Key_Mute,   Consumer_VolumeDecrement, Consumer_VolumeIncrement, Key_Backslash,   Key_Pipe,
-   ___, ___, Key_mouseBtnL, Key_mouseBtnR,
+   ___, ___, ___, ___,
    ___)
 ) // KEYMAPS(
  
@@ -525,8 +525,9 @@ void setup() {
   // disable sticky feature
   //OneShot.double_tap_sticky = false;
   OneShot.disableStickabilityForModifiers();
+  OneShot.disableStickabilityForLayers();
   // shorter timer
-  OneShot.time_out = 1500;
+  OneShot.time_out = 600;
 
   ActiveModColorEffect.highlight_color = CRGB(0x00, 0x00, 0xff);
 }
