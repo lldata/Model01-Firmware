@@ -230,6 +230,38 @@ KEYMAPS(
 /* Re-enable astyle's indent enforcement */
 // *INDENT-ON*
 
+static void press(Key key) {
+  Kaleidoscope.hid().keyboard().pressKey(key);
+  Kaleidoscope.hid().keyboard().sendReport();
+}
+
+static void release(Key key) {
+  Kaleidoscope.hid().keyboard().releaseKey(key);
+  Kaleidoscope.hid().keyboard().sendReport();
+}
+
+static void tap(Key key) {
+  press(key);
+  release(key);
+}
+
+static void compose2(Key key1, bool shift1, Key key2, bool shift2, uint8_t keyState) {
+  if (!keyToggledOn(keyState)) {
+    return;
+  }
+    bool shifted = Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift)
+  || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift);
+
+  tap(Key_RightAlt);
+  if (shifted && shift1) press(Key_LeftShift);
+  tap(key1);
+  if (shifted && shift1) release(Key_LeftShift);
+  if (shifted && shift2) press(Key_LeftShift);
+  tap(key2);
+  if (shifted && shift2) release(Key_LeftShift);
+  //release(Key_RightAlt);
+}
+
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
 
@@ -255,49 +287,8 @@ KEYMAPS(
     case L_E_:
       compose2(Key_Quote, false, Key_E, true, keyState);
       break;
-    case M_LNX:
-      //HostOS.os(kaleidoscope::hostos::LINUX);
-      break;
-    case M_MAC:
-      //HostOS.os(kaleidoscope::hostos::OSX);
-      break;
-    case M_WIN:
-      //HostOS.os(kaleidoscope::hostos::WINDOWS);
-      break;
   }
   return MACRO_NONE;
- }
-
-static void compose2(Key key1, bool shift1, Key key2, bool shift2, uint8_t keyState) {
-  if (!keyToggledOn(keyState)) {
-    return;
-  }
-    bool shifted = Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift)
-  || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift);
-
-  tap(Key_RightAlt);
-  if (shifted && shift1) press(Key_LeftShift);
-  tap(key1);
-  if (shifted && shift1) release(Key_LeftShift);
-  if (shifted && shift2) press(Key_LeftShift);
-  tap(key2);
-  if (shifted && shift2) release(Key_LeftShift);
-  //release(Key_RightAlt);
-}
-
-static void press(Key key) {
-  Kaleidoscope.hid().keyboard().pressKey(key);
-  Kaleidoscope.hid().keyboard().sendReport();
-}
-
-static void release(Key key) {
-  Kaleidoscope.hid().keyboard().releaseKey(key);
-  Kaleidoscope.hid().keyboard().sendReport();
-}
-
-static void tap(Key key) {
-  press(key);
-  release(key);
 }
 
 /** toggleLedsOnSuspendResume toggles the LEDs off when the host goes to sleep,
